@@ -1,0 +1,23 @@
+.header {
+    background: linear-gradient(135deg, #a0a0a0 0%, #555 100%);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+}
+ 
+.nav ul li {
+    display: inline;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}

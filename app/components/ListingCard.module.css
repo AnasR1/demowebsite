@@ -1,0 +1,27 @@
+.listingCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    max-width: 500px;
+    margin: auto;
+    opacity: 0.9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: linear-gradient(135deg, #6608be 0%, #146ab5 100%);
+    flex: 0 0 auto;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info {
+    flex: 1;
+    text-align: left;
+}
