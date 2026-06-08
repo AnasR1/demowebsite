@@ -1,5 +1,5 @@
-Use docker image to deploy on VM google cloud vm or aws
-instead use pnpm over npm figure out why?
+-Use docker image to deploy on VM google cloud vm or aws
+-instead use pnpm over npm figure out why?
 - it is better as it usses a global shared locations so that all projects are using the same. Uses a hardlink to the global instead of 
 downloading it locally and adding to package size. pnpm is faster due to gloabl linking. reduces duplication by  
-Try git server (gitea) use ubuntu not windows for this
+-Try git server (gitea) use ubuntu not windows for this

@@ -30,7 +30,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-reqs.txt
 .dockerignore
 templogo.webp:Zone.Identifier
 /OldStuff
+reqs.txt
+/OldStuff2
