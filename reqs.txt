@@ -1,5 +1,10 @@
--Use docker image to deploy on VM google cloud vm or aws
--instead use pnpm over npm figure out why?
-- it is better as it usses a global shared locations so that all projects are using the same. Uses a hardlink to the global instead of 
-downloading it locally and adding to package size. pnpm is faster due to gloabl linking. reduces duplication by  
--Try git server (gitea) use ubuntu not windows for this
+set up domain name and set up https usage along with https
+implment reverse proxy using traefik (secondary container must be in the same docker network)
+add database on the backend (mongoDB) - object db vs relational db
+Make a backend server that returns the listing using a RESTAPI try (nodejs fastify) -a few items that are hardcoded
+Use fetch API to get the backend data to frontend
+If comfortable link backend server to database
+
+How to name things to use instead of using IP: 
+www.mydomain.somthinng.com  
+api.mydomain.something.com 
