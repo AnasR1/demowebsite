@@ -8,7 +8,7 @@ interface ListingCardProps {
     imageUrl: string;
 }
 
-export default function ListingCard({ title, description, price, imageUrl }: ListingCardProps) {
+export default function ListingCard({ id, title, description, price, imageUrl }: ListingCardProps) {
   return (
     <div className={styles.listingCard}>
       <img src={imageUrl} alt={title} className={styles.image} />
