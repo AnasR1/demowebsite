@@ -1,10 +1,8 @@
-set up domain name and set up https usage along with https
-implment reverse proxy using traefik (secondary container must be in the same docker network)
-add database on the backend (mongoDB) - object db vs relational db
-Make a backend server that returns the listing using a RESTAPI try (nodejs fastify) -a few items that are hardcoded
-Use fetch API to get the backend data to frontend
-If comfortable link backend server to database
+-set up domain name and set up https usage along with https
+-implment reverse proxy using traefik (secondary container must be in the same docker network)
+-add database on the backend (mongoDB) - object db vs relational db
+-Make a backend server that returns the listing using a RESTAPI try (nodejs fastify) -a few items that are hardcoded
+-Use fetch API to get the backend data to frontend
+-If comfortable link backend server to database
 
-How to name things to use instead of using IP: 
-www.mydomain.somthinng.com  
-api.mydomain.something.com 
+Questions: I used no cache in order to always gete the new data from backend onto front end is this fine is there better. 

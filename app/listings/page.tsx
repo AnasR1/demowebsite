@@ -2,7 +2,7 @@ import ListingCard from "../components/ListingCard";
 import "./listings.css";
 
 async function fetchListings() {
-  const response = await fetch("https://api.anasabdurrahman.com/listings");
+  const response = await fetch("https://api.anasabdurrahman.com/listings", {cache: "no-store"});
   if (!response.ok) {
     throw new Error("Failed to fetch listings");
   }
