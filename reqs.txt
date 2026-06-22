@@ -1,8 +1,5 @@
--set up domain name and set up https usage along with https
--implment reverse proxy using traefik (secondary container must be in the same docker network)
--add database on the backend (mongoDB) - object db vs relational db
--Make a backend server that returns the listing using a RESTAPI try (nodejs fastify) -a few items that are hardcoded
--Use fetch API to get the backend data to frontend
--If comfortable link backend server to database
-
-Questions: I used no cache in order to always gete the new data from backend onto front end is this fine is there better. 
+How to encrypt https and decrpyt how to get certificate what platforms are doing it
+    - Find 1 method to reporidcue and fully explain
+Properly use traefik and understand it's capabilities
+Add proper docker compose file to backend
+ 
