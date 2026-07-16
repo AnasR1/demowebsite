@@ -1,7 +1,7 @@
 import styles from "./ListingCard.module.css";
 
 interface ListingCardProps {
-    id: number;
+    id: string;
     title: string;
     description: string;
     price: number;

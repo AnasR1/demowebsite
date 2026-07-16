@@ -15,12 +15,12 @@ export default async function listings() {
   return <div className="listings-page">
     <h1>Listings Page</h1>
     <p>Welcome to the listings page where we sell houses for real!</p>
-       {listings.map((listing: { id: number; name: string; description: string; price: number }) => (
+       {listings.map((listing: { _id: string; name: string; description: string; price: number }) => (
         <>
           <br />
           <ListingCard
-            key={listing.id}
-            id={listing.id}
+            key={listing._id}
+            id={listing._id}
             title={listing.name}
             price={listing.price}
             description={listing.description}
