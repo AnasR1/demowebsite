@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import {useRouter} from "next/navigation";
 
 interface Listing {
   _id: string;
@@ -10,46 +11,65 @@ interface Listing {
 }
 
 export default function AdminListingsPage() {
+    const router = useRouter();
     const [listings, setListings] = useState<Listing[]>([]);
     const [loading, setLoading] = useState(true);
 
     async function loadListings() {
         setLoading(true);
-        const res = await fetch("https://api.anasabdurrahman.com/listings", { cache: "no-store" });
+        //const res = await fetch("https://api.anasabdurrahman.com/listings", { cache: "no-store", credentials: "include" });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/listings`, { cache: "no-store", credentials: "include" });
         const data = await res.json();
         setListings(data);
         setLoading(false);
     }
+
     async function deleteListing(id: string) {
-        const confirmed = confirm("Delete this listing? This cannot be undone.");
-        if (!confirmed) return;
-        await fetch(`https://api.anasabdurrahman.com/listings/${id}`, {
-            method: "DELETE",
-        });
-        await loadListings();
+      const confirmed = confirm("Delete this listing? This cannot be undone.");
+      if (!confirmed) return;
+      //const res = await fetch(`https://api.anasabdurrahman.com/listings/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/listings/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (res.status === 401) {
+          alert("You are not authorized to delete this listing.");
+          router.push("/login");
+          return;
+      }
+      await loadListings();
     }
 
     async function addListing(e: React.SubmitEvent<HTMLFormElement>) {
-    e.preventDefault();
+      e.preventDefault();
 
-    const price = parseFloat(newPrice);
-    if (!newName || isNaN(price)) {
-      alert("Name and a valid price are required");
-      return;
-    }
+      const price = parseFloat(newPrice);
+      if (!newName || isNaN(price)) {
+        alert("Name and a valid price are required");
+        return;
+      }
 
-    await fetch("https://api.anasabdurrahman.com/listings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newName, description: newDescription, price }),
-    });
+      //const res = await fetch("https://api.anasabdurrahman.com/listings", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/listings`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ name: newName, description: newDescription, price }),
+      });
 
-    setNewName("");
-    setNewDescription("");
-    setNewPrice("");
-    await loadListings();
+      if (res.status === 401) {
+        alert("You are not authorized to add a listing.");
+        router.push("/login");
+        return;
+      }
+
+      setNewName("");
+      setNewDescription("");
+      setNewPrice("");
+      await loadListings();
   }
-    function startEditing(listing: Listing) {
+  
+  function startEditing(listing: Listing) {
     setEditingId(listing._id);
     setEditName(listing.name);
     setEditDescription(listing.description);
@@ -66,11 +86,19 @@ export default function AdminListingsPage() {
       return;
     }
 
-    await fetch(`https://api.anasabdurrahman.com/listings/${editingId}`, {
-      method: "PUT",
+    //const res = await fetch(`https://api.anasabdurrahman.com/listings/${editingId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/listings/${editingId}`, {
+    method: "PUT",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ name: editName, description: editDescription, price }),
     });
+
+    if (res.status === 401) {
+      alert("You are not authorized to edit this listing.");
+      router.push("/login");
+      return;
+    }
 
     setEditingId(null);
     await loadListings();
