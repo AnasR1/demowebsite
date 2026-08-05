@@ -22,6 +22,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <nav>
           <a href="/admin/listings" style={{ marginRight: "1rem" }}>Listings</a>
           <a href="/admin/contact">Contact Submissions</a>
+          <a href="/admin/users" style={{ marginLeft: "1rem" }}>Users</a>
         </nav>
         <button onClick={handleLogout}>Log out</button>
       </header>
