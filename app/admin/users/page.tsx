@@ -97,7 +97,7 @@ export default function AdminUsersPage() {
                 "Content-Type": "application/json"
             },
             credentials: "include",
-            body: JSON.stringify({ body })
+            body: JSON.stringify( body )
         });
 
         if (res.status === 401) {
