@@ -7,7 +7,7 @@ export async function proxy(req: NextRequest) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+  const response = await fetch(`${process.env.BACKEND_INTERNAL_URL}/auth/me`, {
     headers: { cookie : `sessionId=${sessionId.value}` },
   });
 
