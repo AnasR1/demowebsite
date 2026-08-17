@@ -18,7 +18,7 @@ async function getLoggedInUser() {
   }
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+    const response = await fetch(`${process.env.BACKEND_INTERNAL_URL}/auth/me`, {
       headers: { cookie: `sessionId=${sessionId.value}` },
       cache: "no-store",
     });
@@ -34,17 +34,17 @@ async function getLoggedInUser() {
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = getLoggedInUser();
+  const user = await getLoggedInUser();
 
   return (
     <html lang="en">
       <body>
-        {user && AdminBar && <AdminBar user={user} />}
+        {user && AdminBar && <AdminBar username={user.username} />}
         <Header />
         {children}
       </body>
