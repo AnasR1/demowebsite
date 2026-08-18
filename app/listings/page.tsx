@@ -15,7 +15,7 @@ export default async function listings() {
   return <div className="listings-page">
     <h1>Listings Page</h1>
     <p>Welcome to the listings page where we sell houses for real!</p>
-       {listings.map((listing: { _id: string; name: string; description: string; price: number }) => (
+       {listings.map((listing: { _id: string; name: string; description: string; price: number; image?: string }) => (
         <>
           <br />
           <ListingCard
@@ -24,7 +24,7 @@ export default async function listings() {
             title={listing.name}
             price={listing.price}
             description={listing.description}
-            imageUrl="/templogo.webp"
+            imageUrl={listing.image ? `${process.env.NEXT_PUBLIC_API_URL}${listing.image}` : "/templogo.webp"}
           />
         </>
       ))}

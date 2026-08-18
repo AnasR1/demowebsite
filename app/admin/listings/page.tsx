@@ -108,7 +108,6 @@ export default function AdminListingsPage() {
     //const res = await fetch(`https://api.anasabdurrahman.com/listings/${editingId}`, {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/listings/${editingId}`, {
     method: "PUT",
-      headers: { "Content-Type": "application/json" },
       credentials: "include",
       body: formData,
     });
