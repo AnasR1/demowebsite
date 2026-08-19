@@ -1,3 +1,4 @@
+import React from "react";
 import ListingCard from "../components/ListingCard";
 import "./listings.css";
 
@@ -16,7 +17,7 @@ export default async function listings() {
     <h1>Listings Page</h1>
     <p>Welcome to the listings page where we sell houses for real!</p>
        {listings.map((listing: { _id: string; name: string; description: string; price: number; image?: string }) => (
-        <>
+        <React.Fragment key={listing._id}>
           <br />
           <ListingCard
             key={listing._id}
@@ -26,7 +27,7 @@ export default async function listings() {
             description={listing.description}
             imageUrl={listing.image ? `${process.env.NEXT_PUBLIC_API_URL}${listing.image}` : "/templogo.webp"}
           />
-        </>
+        </React.Fragment>
       ))}
   </div>;
 }
